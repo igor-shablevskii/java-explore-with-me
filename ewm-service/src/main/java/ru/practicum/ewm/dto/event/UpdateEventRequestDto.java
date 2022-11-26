@@ -3,6 +3,7 @@ package ru.practicum.ewm.dto.event;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Getter
@@ -11,25 +12,16 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
-public class AdminUpdateEventRequestDto {
+public class UpdateEventRequestDto {
     private Long id;
     private String annotation;
     private Long category;
     private String description;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime eventDate;
-    private Location location;
+    @NotNull
+    private Long eventId;
     private Boolean paid;
     private Integer participantLimit;
-    private Boolean requestModeration;
     private String title;
-
-    @Getter
-    @Setter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    public static class Location {
-        private Double lat;
-        private Double lon;
-    }
 }

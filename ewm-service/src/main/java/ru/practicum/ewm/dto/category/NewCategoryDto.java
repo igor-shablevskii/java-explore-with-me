@@ -1,9 +1,8 @@
-package ru.practicum.ewm.dto.user;
+package ru.practicum.ewm.dto.category;
 
 import lombok.*;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -11,9 +10,8 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @ToString
 @EqualsAndHashCode
-public class UserShortDto {
-    @NotNull
-    private Long id;
+public class NewCategoryDto {
+
     @NotEmpty
     private String name;
 }
