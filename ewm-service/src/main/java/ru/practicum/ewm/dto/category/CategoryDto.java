@@ -1,6 +1,7 @@
 package ru.practicum.ewm.dto.category;
 
 import lombok.*;
+import ru.practicum.ewm.utils.Update;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -9,11 +10,12 @@ import javax.validation.constraints.NotNull;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(of = "id")
+@Builder
 public class CategoryDto {
-    @NotNull
+
+    @NotNull(groups = {Update.class})
     private Long id;
-    @NotEmpty
+    @NotEmpty(groups = {Update.class})
     private String name;
 }

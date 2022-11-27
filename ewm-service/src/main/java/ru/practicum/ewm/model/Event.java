@@ -1,59 +1,54 @@
 package ru.practicum.ewm.model;
 
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @ToString
-@EqualsAndHashCode
+@RequiredArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(of = "id")
 @Entity
-@Table(name = "events")
+@Builder
 public class Event {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "annotation", nullable = false)
+    @Column(length = 2000)
     private String annotation;
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "category_id")
     private Category category;
-    @Column(name = "confirmed_requests")
-    private Integer confirmedRequests;
-    @Column(name = "created_on")
+    @Builder.Default
+    private Integer confirmedRequests = 0;
     private LocalDateTime createdOn;
-    @Column(name = "description")
+    @Column(length = 4000)
     private String description;
-    @Column(name = "event_date", nullable = false)
     private LocalDateTime eventDate;
     @ManyToOne
-    @JoinColumn(name = "initiator_id")
+    @JoinColumn(name = "user_id")
     private User initiator;
-    @ManyToOne
-    @JoinColumn(name = "location_id")
+    @Embedded
     private Location location;
-    @Column(name = "paid", nullable = false)
     private Boolean paid;
-    @Column(name = "participant_limit")
-    private Integer participantLimit;
-    @Column(name = "published_on")
+    @Builder.Default
+    private Integer participantLimit = 0;
     private LocalDateTime publishedOn;
-    @Column(name = "request_moderation")
-    private Boolean requestModeration;
-    @Enumerated(EnumType.STRING)
-    @Column(name = "state")
+    @Builder.Default
+    private Boolean requestModeration = true;
+    @Enumerated
     private EventState state;
-    @Column(name = "title", nullable = false)
     private String title;
-    @Column(name = "views")
-    private Integer views;
+
+    public void increaseConfirmedReq() {
+        confirmedRequests++;
+    }
+
+    public void decreaseConfirmedReq() {
+        confirmedRequests--;
+    }
 }

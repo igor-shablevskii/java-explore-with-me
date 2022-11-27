@@ -1,6 +1,7 @@
 package ru.practicum.ewm.dto.category;
 
 import lombok.*;
+import ru.practicum.ewm.utils.Create;
 
 import javax.validation.constraints.NotEmpty;
 
@@ -8,10 +9,9 @@ import javax.validation.constraints.NotEmpty;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-@EqualsAndHashCode
+@Builder
 public class NewCategoryDto {
 
-    @NotEmpty
+    @NotEmpty(groups = {Create.class})
     private String name;
 }

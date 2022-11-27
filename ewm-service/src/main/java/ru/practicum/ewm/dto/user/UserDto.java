@@ -1,8 +1,6 @@
 package ru.practicum.ewm.dto.user;
 
 import lombok.*;
-import ru.practicum.ewm.utils.Create;
-import ru.practicum.ewm.utils.Update;
 
 import javax.validation.constraints.*;
 
@@ -10,13 +8,14 @@ import javax.validation.constraints.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(of = "id")
+@Builder
 public class UserDto {
+
+    @NotNull
     private Long id;
-    @NotEmpty(groups = {Create.class})
+    @NotEmpty
     private String name;
-    @Email(groups = {Create.class, Update.class})
-    @NotEmpty(groups = {Create.class})
+    @NotEmpty
     private String email;
 }

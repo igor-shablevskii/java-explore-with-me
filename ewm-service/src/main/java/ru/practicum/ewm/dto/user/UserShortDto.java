@@ -9,9 +9,10 @@ import javax.validation.constraints.NotNull;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(of = "id")
+@Builder
 public class UserShortDto {
+
     @NotNull
     private Long id;
     @NotEmpty

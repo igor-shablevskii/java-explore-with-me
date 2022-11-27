@@ -11,9 +11,10 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(of = "id")
+@Builder
 public class EventShortDto {
+
     private Long id;
     @NotEmpty
     private String annotation;
@@ -29,14 +30,16 @@ public class EventShortDto {
     private Boolean paid;
     @NotEmpty
     private String title;
-    private Integer views;
+    private Long views = 0L;
 
     @Getter
     @Setter
     @NoArgsConstructor
     @AllArgsConstructor
+    @Builder
     public static class CategoryDto {
-        private Integer id;
+
+        private Long id;
         private String name;
     }
 
@@ -44,7 +47,9 @@ public class EventShortDto {
     @Setter
     @NoArgsConstructor
     @AllArgsConstructor
+    @Builder
     public static class UserShortDto {
+
         private Long id;
         private String name;
     }

@@ -1,19 +1,21 @@
 package ru.practicum.ewm.dto.compilation;
 
 import lombok.*;
+import ru.practicum.ewm.utils.Create;
 
 import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 @Getter
 @Setter
-@NoArgsConstructor
+@RequiredArgsConstructor
 @AllArgsConstructor
-@ToString
-@EqualsAndHashCode
+@Builder
 public class NewCompilationDto {
+
     private List<Long> events;
-    private Boolean pinned;
-    @NotEmpty
+    @Builder.Default
+    private Boolean pinned = false;
+    @NotEmpty(groups = {Create.class})
     private String title;
 }

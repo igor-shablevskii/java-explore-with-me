@@ -3,7 +3,6 @@ package ru.practicum.ewm.dto.event;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import ru.practicum.ewm.model.EventState;
-import ru.practicum.ewm.model.Location;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -13,9 +12,10 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(of = "id")
+@Builder
 public class EventFullDto {
+
     private Long id;
     @NotEmpty
     private String annotation;
@@ -41,14 +41,16 @@ public class EventFullDto {
     private EventState state;
     @NotEmpty
     private String title;
-    private Integer views;
+    private Long views;
 
     @Getter
     @Setter
     @AllArgsConstructor
     @NoArgsConstructor
+    @Builder
     public static class CategoryDto {
-        private Integer id;
+
+        private Long id;
         private String name;
     }
 
@@ -56,8 +58,21 @@ public class EventFullDto {
     @Setter
     @AllArgsConstructor
     @NoArgsConstructor
+    @Builder
     public static class UserShortDto {
+
         private Long id;
         private String name;
+    }
+
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
+    public static class Location {
+
+        private Float lat;
+        private Float lon;
     }
 }

@@ -1,24 +1,69 @@
 package ru.practicum.ewm.dto.compilation;
 
 import lombok.*;
-import ru.practicum.ewm.dto.event.EventShortDto;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
-@NoArgsConstructor
+@RequiredArgsConstructor
 @AllArgsConstructor
-@ToString
-@EqualsAndHashCode
+@Builder
 public class CompilationDto {
-    @NotNull
+
     private Long id;
-    private List<EventShortDto> events;
-    @NotNull
+    @Builder.Default
+    private List<EventShortDto> events = new ArrayList<>();
     private Boolean pinned;
-    @NotEmpty
     private String title;
+
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
+    public static class EventShortDto {
+
+        private Long id;
+        @NotEmpty
+        private String annotation;
+        @NotNull
+        private CategoryDto category;
+        private Integer confirmedRequests;
+        @NotNull
+        private LocalDateTime eventDate;
+        @NotNull
+        private UserShortDto initiator;
+        @NotNull
+        private Boolean paid;
+        @NotEmpty
+        private String title;
+        private Long views;
+
+        @Getter
+        @Setter
+        @NoArgsConstructor
+        @AllArgsConstructor
+        @Builder
+        public static class UserShortDto {
+
+            private Long id;
+            private String name;
+        }
+
+        @Getter
+        @Setter
+        @NoArgsConstructor
+        @AllArgsConstructor
+        @Builder
+        public static class CategoryDto {
+
+            private Long id;
+            private String name;
+        }
+    }
 }

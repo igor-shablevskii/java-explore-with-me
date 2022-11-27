@@ -9,10 +9,9 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-@EqualsAndHashCode
+@Builder
 public class AdminUpdateEventRequestDto {
-    private Long id;
+
     private String annotation;
     private Long category;
     private String description;
@@ -28,8 +27,10 @@ public class AdminUpdateEventRequestDto {
     @Setter
     @NoArgsConstructor
     @AllArgsConstructor
+    @Builder
     public static class Location {
-        private Double lat;
-        private Double lon;
+
+        private Float lat;
+        private Float lon;
     }
 }
