@@ -20,7 +20,6 @@ import java.util.stream.Collectors;
 @Component
 @RequiredArgsConstructor
 public class EventMapper {
-    
     private final StatsClient statsClient;
 
     public static Event toEvent(Long userId, NewEventDto newEventDto) {

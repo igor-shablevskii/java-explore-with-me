@@ -38,7 +38,7 @@ public class Client {
                 .get()
                 .uri("/stats?start=" + start + "&end=" + end + "&uris=" + String.join(", ", uris)
                                 .replace("{", "")
-                                .replace("}", "")+ "&unique=" + unique)
+                                .replace("}", "") + "&unique=" + unique)
                 .retrieve()
                 .bodyToFlux(ViewStats.class)
                 .collect(Collectors.toList())
