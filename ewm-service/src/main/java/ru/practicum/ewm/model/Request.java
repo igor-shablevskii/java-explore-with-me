@@ -15,6 +15,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 @Builder
+@ToString
 public class Request {
 
     @Id

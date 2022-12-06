@@ -20,16 +20,23 @@ public class AdminCategoryController {
 
     @PostMapping
     public CategoryDto add(@Validated(Create.class) @RequestBody NewCategoryDto newCategoryDto) {
+        log.info("Method: Post, path = admin/categories, AdminCategoryController/add, requestBody: {}", newCategoryDto);
+
         return adminCategoryService.add(newCategoryDto);
     }
 
     @PatchMapping
-    public CategoryDto edit(@Validated(Update.class) @RequestBody CategoryDto categoriesDto) {
-        return adminCategoryService.edit(categoriesDto);
+    public CategoryDto edit(@Validated(Update.class) @RequestBody CategoryDto categoryDto) {
+        log.info("Method: Patch, path = admin/categories, AdminCategoryController/edit, requestBody: {}", categoryDto);
+
+        return adminCategoryService.edit(categoryDto);
     }
 
     @DeleteMapping("/{catId}")
     public void delete(@PathVariable Long catId) {
+        log.info("Method: Delete, path = admin/categories/{catId}, AdminCategoryController/delete, param: catId={}",
+                catId);
+
         adminCategoryService.delete(catId);
     }
 }

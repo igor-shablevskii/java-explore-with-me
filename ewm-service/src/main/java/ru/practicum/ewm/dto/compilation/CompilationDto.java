@@ -13,6 +13,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString
 public class CompilationDto {
 
     private Long id;
@@ -26,6 +27,7 @@ public class CompilationDto {
     @NoArgsConstructor
     @AllArgsConstructor
     @Builder
+    @ToString
     public static class EventShortDto {
 
         private Long id;
@@ -49,6 +51,7 @@ public class CompilationDto {
         @NoArgsConstructor
         @AllArgsConstructor
         @Builder
+        @ToString
         public static class UserShortDto {
 
             private Long id;
@@ -60,6 +63,7 @@ public class CompilationDto {
         @NoArgsConstructor
         @AllArgsConstructor
         @Builder
+        @ToString
         public static class CategoryDto {
 
             private Long id;

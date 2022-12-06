@@ -20,12 +20,18 @@ public class PublicCategoryController {
 
     @GetMapping("/{catId}")
     public CategoryDto getOne(@PathVariable Long catId) {
+        log.info("Method: Get, path = /categories/{catId}, PublicCategoryController/getOne, " +
+                "pathVariable: catId={}", catId);
+
         return publicCategoryService.getOne(catId);
     }
 
     @GetMapping
     public List<CategoryDto> getAll(@RequestParam(defaultValue = "0") @PositiveOrZero Integer from,
                                     @RequestParam(defaultValue = "10") @Positive Integer size) {
+        log.info("Method: Get, path = /categories, PublicCategoryController/getAll, " +
+                "params: from={}, size={}", from, size);
+
         return publicCategoryService.getAll(from, size);
     }
 }

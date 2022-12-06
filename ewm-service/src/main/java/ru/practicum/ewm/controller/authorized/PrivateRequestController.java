@@ -18,18 +18,29 @@ public class PrivateRequestController {
 
     @GetMapping
     public List<ParticipationRequestDto> getAll(@PathVariable Long userId) {
+        log.info("Method: Get, path = /users/{userId}/requests, PrivateRequestController/getAll, " +
+                "pathVariable: userId={}", userId);
+
         return service.getAll(userId);
     }
 
     @PostMapping
     public ParticipationRequestDto add(@PathVariable Long userId,
                                        @RequestParam Long eventId) {
+        log.info("Method: Post, path = /users/{userId}/requests, " +
+                "PrivateRequestController/add, pathVariable: userId={}, requestParam: eventId={}",
+                userId, eventId);
+
         return service.add(userId, eventId);
     }
 
     @PatchMapping("/{requestId}/cancel")
     public ParticipationRequestDto cancel(@PathVariable Long userId,
                                           @PathVariable Long requestId) {
+        log.info("Method: Patch, path = /users/{userId}/requests/{requestId}/cancel, " +
+                "PrivateRequestController/cancel, pathVariables: userId={}, requestId={}",
+                userId, requestId);
+
         return service.cancel(userId, requestId);
     }
 }

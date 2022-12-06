@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 @Builder
+@ToString
 @EqualsAndHashCode(of = "id")
 public class EndpointHit {
 

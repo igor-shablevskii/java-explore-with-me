@@ -11,6 +11,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Entity
 @Builder
+@ToString
 public class Compilation {
 
     @Id

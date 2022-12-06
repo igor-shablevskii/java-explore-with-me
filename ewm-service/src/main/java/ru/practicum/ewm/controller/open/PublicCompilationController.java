@@ -22,11 +22,17 @@ public class PublicCompilationController {
     public List<CompilationDto> getAll(@RequestParam(required = false) Boolean pinned,
                                        @RequestParam(defaultValue = "0") @PositiveOrZero Integer from,
                                        @RequestParam(defaultValue = "10") @Positive Integer size) {
+        log.info("Method: Get, path = /compilations, PublicCompilationController/getAll, " +
+                "params: pinned={}, from={}, size={}", pinned, from, size);
+
         return publicCompilationService.getAll(pinned, from, size);
     }
 
     @GetMapping("/{compId}")
     public CompilationDto getOne(@PathVariable Long compId) {
+        log.info("Method: Get, path = /compilations/{compId}, PublicCompilationController/getOne, " +
+                "pathVariable: compId={}", compId);
+
         return publicCompilationService.getOne(compId);
     }
 }

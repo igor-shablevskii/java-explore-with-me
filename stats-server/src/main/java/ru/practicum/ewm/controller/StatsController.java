@@ -27,6 +27,8 @@ public class StatsController {
 
     @PostMapping("/hit")
     public void addHit(@RequestBody @Valid EndpointHitDto endpointHitDto) {
+        log.info("Method: Post, path = /hit, StatsController/addHit, requestBody: {}", endpointHitDto);
+
         statsService.createHit(endpointHitDto);
     }
 
@@ -40,6 +42,8 @@ public class StatsController {
                 DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
         LocalDateTime decodeEnd = LocalDateTime.parse(java.net.URLDecoder.decode(end, StandardCharsets.UTF_8),
                 DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+        log.info("Method: Get, path = /stats, StatsController/getViewStats, " +
+                "requestParams: start={}, end={}, uris={}, unique={}", decodeStart, decodeEnd, uris, unique);
 
         return statsService.getStats(decodeStart, decodeEnd, uris, unique);
     }

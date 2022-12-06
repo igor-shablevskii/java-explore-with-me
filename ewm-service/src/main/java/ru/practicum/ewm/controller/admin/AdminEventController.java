@@ -31,6 +31,9 @@ public class AdminEventController {
                                      @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") LocalDateTime rangeEnd,
                                      @RequestParam(defaultValue = "0") @PositiveOrZero Integer from,
                                      @RequestParam(defaultValue = "10") @Positive Integer size) {
+        log.info("Method: GET, path = /admin/events, AdminEventController/getAll, params: users={}, states={}, " +
+                        "categories={}, rangeStart={}, rangeEnd={}, from={}, size={}",
+                users, states, categories, rangeStart, rangeEnd, from, size);
 
         return adminEventService.getAll(users, states, categories, rangeStart, rangeEnd, from, size);
     }
@@ -38,16 +41,25 @@ public class AdminEventController {
     @PutMapping("/{eventId}")
     public EventFullDto editEvent(@PathVariable Long eventId,
                                   @RequestBody AdminUpdateEventRequestDto adminUpdateEventRequestDto) {
+        log.info("Method: PUT, path = /admin/events/{eventId}, AdminEventController/editEvent, param: eventId = {}," +
+                "requestBody: {}", eventId, adminUpdateEventRequestDto);
+
         return adminEventService.edit(eventId, adminUpdateEventRequestDto);
     }
 
     @PatchMapping("/{eventId}/publish")
     public EventFullDto publish(@PathVariable Long eventId) {
+        log.info("Method: Patch, path = /admin/events/{eventId}/publish, AdminEventController/publish, " +
+                "param: eventId = {}", eventId);
+
         return adminEventService.publish(eventId);
     }
 
     @PatchMapping("/{eventId}/reject")
     public EventFullDto reject(@PathVariable Long eventId) {
+        log.info("Method: Patch, path = /admin/events/{eventId}/reject, AdminEventController/reject, " +
+                "param: eventId = {}", eventId);
+
         return adminEventService.reject(eventId);
     }
 }

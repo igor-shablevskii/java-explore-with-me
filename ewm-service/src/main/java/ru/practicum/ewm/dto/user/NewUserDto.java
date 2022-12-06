@@ -12,6 +12,7 @@ import javax.validation.constraints.Size;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString
 public class NewUserDto {
 
     @NotEmpty(groups = {Create.class})

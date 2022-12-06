@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString
 public class NewEventDto {
 
     @NotEmpty(groups = {Create.class})
@@ -44,6 +45,7 @@ public class NewEventDto {
     @NoArgsConstructor
     @AllArgsConstructor
     @Builder
+    @ToString
     public static class Location {
 
         private Float lat;

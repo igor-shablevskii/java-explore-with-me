@@ -22,16 +22,22 @@ public class AdminUserController {
 
     @GetMapping
     public List<UserDto> search(@RequestParam List<Long> ids) {
+        log.info("Method: Get, path = /admin/users, AdminUserService/search, param: ids = {}", ids);
+
         return adminUserService.search(ids);
     }
 
     @PostMapping
     public UserDto add(@Validated(Create.class) @RequestBody NewUserDto newUserDto) {
+        log.info("Method: Post, path = /admin/users, AdminUserService/add, requestBody: {}", newUserDto);
+
         return adminUserService.add(newUserDto);
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
+        log.info("Method: Delete, path = /admin/users/{id}, AdminUserService/delete, param: id = {}", id);
+
         adminUserService.delete(id);
     }
 }

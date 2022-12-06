@@ -10,6 +10,7 @@ import javax.validation.constraints.NotEmpty;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString
 public class NewCategoryDto {
 
     @NotEmpty(groups = {Create.class})

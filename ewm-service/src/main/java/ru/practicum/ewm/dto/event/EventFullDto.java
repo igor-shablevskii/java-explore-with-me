@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 @Builder
+@ToString
 public class EventFullDto {
 
     private Long id;
@@ -48,6 +49,7 @@ public class EventFullDto {
     @AllArgsConstructor
     @NoArgsConstructor
     @Builder
+    @ToString
     public static class CategoryDto {
 
         private Long id;
@@ -59,6 +61,7 @@ public class EventFullDto {
     @AllArgsConstructor
     @NoArgsConstructor
     @Builder
+    @ToString
     public static class UserShortDto {
 
         private Long id;
@@ -70,6 +73,7 @@ public class EventFullDto {
     @NoArgsConstructor
     @AllArgsConstructor
     @Builder
+    @ToString
     public static class Location {
 
         private Float lat;

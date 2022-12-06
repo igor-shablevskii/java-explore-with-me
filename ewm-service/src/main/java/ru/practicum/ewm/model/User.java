@@ -15,6 +15,7 @@ import javax.persistence.Id;
 @Entity(name = "users")
 @EqualsAndHashCode(of = "id")
 @Builder
+@ToString
 public class User {
 
     @Id

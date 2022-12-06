@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString
 public class AdminUpdateEventRequestDto {
 
     private String annotation;
@@ -28,6 +29,7 @@ public class AdminUpdateEventRequestDto {
     @NoArgsConstructor
     @AllArgsConstructor
     @Builder
+    @ToString
     public static class Location {
 
         private Float lat;

@@ -27,7 +27,7 @@ public class PublicEventController {
     @GetMapping("/{id}")
     public EventFullDto getOne(HttpServletRequest request,
                                @PathVariable Long id) {
-        log.info("Get event {}", id);
+        log.info("Method: Get, path = /events/{id}, PublicEventController/getOne, pathVariable: id={}", id);
         statsClient.saveEndpointHit(request);
 
         return publicEventService.getOne(id);
@@ -46,6 +46,9 @@ public class PublicEventController {
                                       @RequestParam(required = false, defaultValue = "ID") String sort,
                                       @RequestParam(defaultValue = "0") @PositiveOrZero Integer from,
                                       @RequestParam(defaultValue = "10") @Positive Integer size) {
+        log.info("Method: GET, path = /events, PublicEventController/getAll, params: text={}, categories={}, " +
+                        "paid={}, rangeStart={}, rangeEnd={}, onlyAvailable={}, sort={}, from={}, size={}",
+                text, categories, paid, rangeStart, rangeEnd, onlyAvailable, sort, from, size);
         statsClient.saveEndpointHit(request);
 
         return publicEventService.getAll(text, categories, paid, rangeStart, rangeEnd,

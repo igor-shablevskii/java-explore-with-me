@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 @Builder
+@ToString
 public class ParticipationRequestDto {
 
     private Long id;

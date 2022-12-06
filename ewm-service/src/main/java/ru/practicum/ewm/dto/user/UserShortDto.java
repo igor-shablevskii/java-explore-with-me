@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 @Builder
+@ToString
 public class UserShortDto {
 
     @NotNull

@@ -10,6 +10,7 @@ import javax.validation.constraints.*;
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 @Builder
+@ToString
 public class UserDto {
 
     @NotNull

@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 @Builder
+@ToString
 public class EventShortDto {
 
     private Long id;
@@ -37,6 +38,7 @@ public class EventShortDto {
     @NoArgsConstructor
     @AllArgsConstructor
     @Builder
+    @ToString
     public static class CategoryDto {
 
         private Long id;
@@ -48,6 +50,7 @@ public class EventShortDto {
     @NoArgsConstructor
     @AllArgsConstructor
     @Builder
+    @ToString
     public static class UserShortDto {
 
         private Long id;
