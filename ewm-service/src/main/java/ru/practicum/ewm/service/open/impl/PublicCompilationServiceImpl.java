@@ -1,7 +1,6 @@
 package ru.practicum.ewm.service.open.impl;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -18,7 +17,6 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j
 public class PublicCompilationServiceImpl implements PublicCompilationService {
 
     private final CompilationRepository repository;
@@ -28,7 +26,6 @@ public class PublicCompilationServiceImpl implements PublicCompilationService {
     public CompilationDto getOne(Long compId) {
         Compilation compilation = repository.findById(compId)
                 .orElseThrow(() -> new NotFoundException("Compilation not found"));
-        log.info("Compilation: {}", compilation.getEvents());
 
         return CompilationMapper.toCompilationDto(compilation);
     }

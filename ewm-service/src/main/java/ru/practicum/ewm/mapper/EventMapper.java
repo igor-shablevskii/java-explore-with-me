@@ -68,7 +68,7 @@ public class EventMapper {
                 .requestModeration(event.getRequestModeration())
                 .state(event.getState())
                 .title(event.getTitle())
-                .views(statsClient.getViewsForEvent(event, false)) // todo
+                .views(statsClient.getViewsForEvent(event, false))
                 .build();
     }
 
