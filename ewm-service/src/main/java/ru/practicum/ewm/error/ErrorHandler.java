@@ -14,19 +14,6 @@ import java.time.format.DateTimeFormatter;
 @Slf4j
 public class ErrorHandler {
 
-    @Getter
-    @Setter
-    @NoArgsConstructor
-    @AllArgsConstructor
-    @Builder
-    private static class ApiError {
-        private StackTraceElement[] errors;
-        private String message;
-        private String reason;
-        private HttpStatus status;
-        private String timestamp;
-    }
-
     @ExceptionHandler
     public ResponseEntity<String> handleNotFoundException(NotFoundException e) {
         log.error(e.getMessage(), e);
@@ -57,4 +44,17 @@ public class ErrorHandler {
      private String getTimeStamp() {
         return LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
      }
+
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @Builder
+    private static class ApiError {
+        private StackTraceElement[] errors;
+        private String message;
+        private String reason;
+        private HttpStatus status;
+        private String timestamp;
+    }
 }
