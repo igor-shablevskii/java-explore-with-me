@@ -25,27 +25,20 @@ public class CommentMapper {
                 .build();
     }
 
-//    public static Comment toComment(CommentDto commentDto, Long userId, Long eventId) {
-//        return Comment.builder()
-//                .author(User.builder().id(userId).build())
-//                .event(Event.builder().id(eventId).build())
-//                .text(commentDto.getText())
-//                .createdOn(LocalDateTime.now())
-//                .build();
-//    }
-
     public static CommentDto toCommentDto(Comment comment) {
         return CommentDto.builder()
+                .id(comment.getId())
+                .text(comment.getText())
                 .author(CommentDto.UserShortDto.builder()
                         .id(comment.getAuthor().getId())
                         .name(comment.getAuthor().getName())
                         .build())
                 .event(CommentDto.EventShortDto.builder()
                         .id(comment.getEvent().getId())
-                        .annotation(comment.getEvent().getAnnotation())
                         .title(comment.getEvent().getTitle())
                         .eventDate(comment.getEvent().getEventDate())
                         .build())
+                .createdOn(comment.getCreatedOn())
                 .state(comment.getState())
                 .build();
     }
