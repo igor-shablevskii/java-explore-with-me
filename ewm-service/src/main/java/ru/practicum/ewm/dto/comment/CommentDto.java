@@ -1,7 +1,9 @@
 package ru.practicum.ewm.dto.comment;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
 import ru.practicum.ewm.model.CommentState;
+import ru.practicum.ewm.utils.Update;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -15,7 +17,7 @@ import java.time.LocalDateTime;
 @ToString
 public class CommentDto {
 
-    @NotNull
+    @NotNull(groups = {Update.class})
     private Long id;
     @NotNull
     private UserShortDto author;
@@ -24,6 +26,7 @@ public class CommentDto {
     @NotEmpty
     private String text;
     @NotNull
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createdOn;
     @NotNull
     private CommentState state;
@@ -50,10 +53,8 @@ public class CommentDto {
 
         private Long id;
         @NotEmpty
-        private String annotation;
+        private String title;
         @NotNull
         private LocalDateTime eventDate;
-        @NotEmpty
-        private String title;
     }
 }

@@ -19,9 +19,9 @@ public class PrivateCommentController {
 
     private final PrivateCommentService privateCommentService;
 
-    @PostMapping
+    @PostMapping("/events/{eventId}")
     public CommentDto create(@PathVariable Long userId,
-                             @RequestParam Long eventId,
+                             @PathVariable Long eventId,
                              @RequestBody @Validated(Create.class) NewCommentDto newCommentDto) {
         log.info("Method: Post, path = /users/{userId}/comments, PrivateCommentController/create, " +
                 "pathVariable: userId={}, param: eventId={}, requestBody={}", userId, eventId, newCommentDto);
@@ -31,12 +31,11 @@ public class PrivateCommentController {
 
     @PatchMapping
     public CommentDto update(@PathVariable Long userId,
-                             @RequestParam Long eventId,
                              @RequestBody @Validated(Update.class) CommentDto commentDto) {
         log.info("Method: Patch, path = /users/{userId}/comments, PrivateCommentController/update, " +
-                "pathVariable: userId={}, param: eventId={}, requestBody={}", userId, eventId, commentDto);
+                "pathVariable: userId={}, requestBody={}", userId, commentDto);
 
-        return privateCommentService.update(userId, eventId, commentDto);
+        return privateCommentService.update(userId, commentDto);
     }
 
     @DeleteMapping("/{commentId}")

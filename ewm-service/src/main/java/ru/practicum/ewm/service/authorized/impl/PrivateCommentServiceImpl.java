@@ -41,9 +41,8 @@ public class PrivateCommentServiceImpl implements PrivateCommentService {
 
     @Override
     @Transactional
-    public CommentDto update(Long userId, Long eventId, CommentDto commentDto) {
+    public CommentDto update(Long userId, CommentDto commentDto) {
         User user = getUser(userId);
-        getEvent(eventId);
         Comment comment = getComment(commentDto.getId());
 
         if (user.equals(comment.getAuthor())) {

@@ -43,7 +43,7 @@ public class PublicEventServiceImpl implements PublicEventService {
                                       LocalDateTime rangeEnd, Boolean onlyAvailable, String sort, Integer from, Integer size) {
 
         Page<Event> events = repository.findAll((root, query, criteriaBuilder) ->
-                criteriaBuilder.and(criteriaBuilder.equal(root.get("state"), EventState.PUBLISHED.ordinal()),
+                criteriaBuilder.and(criteriaBuilder.equal(root.get("state"), EventState.PUBLISHED),
                         root.get("category").in(categories),
                         criteriaBuilder.equal(root.get("paid"), paid),
                         (rangeStart != null && rangeEnd != null) ? criteriaBuilder.and(

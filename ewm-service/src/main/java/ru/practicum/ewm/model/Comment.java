@@ -28,6 +28,6 @@ public class Comment {
     private String text;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime createdOn;
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private CommentState state;
 }

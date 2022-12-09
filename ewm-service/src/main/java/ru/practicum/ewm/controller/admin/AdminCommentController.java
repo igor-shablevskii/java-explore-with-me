@@ -15,7 +15,7 @@ public class AdminCommentController {
     private final AdminCommentService adminCommentService;
 
     @PatchMapping("/{commentId}/publish")
-    public CommentDto publish(@PathVariable("commentId") Long commentId) {
+    public CommentDto publish(@PathVariable Long commentId) {
         log.info("Method: Patch, path = /admin/comments/{commentId}/publish, AdminCommentService/publish, " +
                 "param: eventId = {}", commentId);
 
@@ -23,7 +23,7 @@ public class AdminCommentController {
     }
 
     @PatchMapping("/{commentId}/reject")
-    public CommentDto reject(@PathVariable("commentId") Long commentId) {
+    public CommentDto reject(@PathVariable Long commentId) {
         log.info("Method: Patch, path = /admin/comments/{commentId}/reject, AdminCommentService/reject, " +
                 "param: eventId = {}", commentId);
 
