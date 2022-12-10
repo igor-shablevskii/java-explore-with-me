@@ -1,7 +1,6 @@
 package ru.practicum.ewm.service.open.impl;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -24,7 +23,6 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j
 public class PublicEventServiceImpl implements PublicEventService {
 
     private final EventRepository repository;
@@ -45,7 +43,7 @@ public class PublicEventServiceImpl implements PublicEventService {
                                       LocalDateTime rangeEnd, Boolean onlyAvailable, String sort, Integer from, Integer size) {
 
         Page<Event> events = repository.findAll((root, query, criteriaBuilder) ->
-                criteriaBuilder.and(criteriaBuilder.equal(root.get("state"), EventState.PUBLISHED.ordinal()),
+                criteriaBuilder.and(criteriaBuilder.equal(root.get("state"), EventState.PUBLISHED),
                         root.get("category").in(categories),
                         criteriaBuilder.equal(root.get("paid"), paid),
                         (rangeStart != null && rangeEnd != null) ? criteriaBuilder.and(

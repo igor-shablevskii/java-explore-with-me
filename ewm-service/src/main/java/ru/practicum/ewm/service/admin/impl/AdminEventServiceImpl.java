@@ -1,7 +1,6 @@
 package ru.practicum.ewm.service.admin.impl;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -24,20 +23,19 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j
 public class AdminEventServiceImpl implements AdminEventService {
 
     private final EventRepository repository;
     private final EventMapper eventMapper;
 
     @Override
-    public List<EventFullDto> getAll(List<Long> users, List<String> states, List<Long> categories, LocalDateTime rangeStart,
-                                     LocalDateTime rangeEnd, Integer from, Integer size) {
+    public List<EventFullDto> getAll(List<Long> users, List<String> states, List<Long> categories,
+                                     LocalDateTime rangeStart, LocalDateTime rangeEnd, Integer from, Integer size) {
 
         Page<Event> events = repository.findAll((root, query, criteriaBuilder) -> criteriaBuilder.and(
                         (users != null) ? root.get("initiator").in(users) : root.isNotNull(),
                         (states != null) ? root.get("state").in(states.stream()
-                                .map(s -> EventState.valueOf(s).ordinal())
+                                .map(EventState::valueOf)
                                 .collect(Collectors.toList())) : root.isNotNull(),
                         (categories != null) ? root.get("category").in(categories) : root.isNotNull(),
                         (rangeStart != null && rangeEnd != null) ? criteriaBuilder.and(

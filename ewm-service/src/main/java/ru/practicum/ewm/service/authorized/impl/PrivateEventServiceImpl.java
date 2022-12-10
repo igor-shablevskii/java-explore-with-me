@@ -1,7 +1,6 @@
 package ru.practicum.ewm.service.authorized.impl;
 
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -25,7 +24,6 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Slf4j
 public class PrivateEventServiceImpl implements PrivateEventService {
 
     private final EventRepository repository;

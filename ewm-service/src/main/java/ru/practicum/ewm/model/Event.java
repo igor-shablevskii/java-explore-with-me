@@ -40,7 +40,7 @@ public class Event {
     private LocalDateTime publishedOn;
     @Builder.Default
     private Boolean requestModeration = true;
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private EventState state;
     private String title;
 

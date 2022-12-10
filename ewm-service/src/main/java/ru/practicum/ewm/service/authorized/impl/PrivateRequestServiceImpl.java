@@ -55,7 +55,7 @@ public class PrivateRequestServiceImpl implements PrivateRequestService {
             List<Request> requestList = requestRepository.findAll(((root, query, criteriaBuilder) ->
                     criteriaBuilder.and(
                             criteriaBuilder.equal(root.get("event"), event.getId()),
-                            criteriaBuilder.equal(root.get("status"), RequestState.PENDING.ordinal())
+                            criteriaBuilder.equal(root.get("status"), RequestState.PENDING)
                     )));
             requestList.forEach(e -> e.setStatus(RequestState.REJECTED));
             requestRepository.saveAll(requestList);
@@ -118,7 +118,7 @@ public class PrivateRequestServiceImpl implements PrivateRequestService {
         Event event = eventRepository.findOne(((root, query, criteriaBuilder) ->
                 criteriaBuilder.and(
                         criteriaBuilder.equal(root.get("id"), request.getEvent().getId()),
-                        criteriaBuilder.equal(root.get("state"), EventState.PUBLISHED.ordinal())
+                        criteriaBuilder.equal(root.get("state"), EventState.PUBLISHED)
                 ))).orElseThrow(() -> new NotFoundException("Event not found"));
         if (request.getStatus().equals(RequestState.CONFIRMED)) {
             event.decreaseConfirmedReq();
@@ -134,7 +134,7 @@ public class PrivateRequestServiceImpl implements PrivateRequestService {
                 criteriaBuilder.and(
                         criteriaBuilder.equal(root.get("id"), eventId),
                         (initiator) ? criteriaBuilder.equal(root.get("initiator"), userId) : criteriaBuilder.notEqual(root.get("initiator"), userId),
-                        criteriaBuilder.equal(root.get("state"), EventState.PUBLISHED.ordinal())
+                        criteriaBuilder.equal(root.get("state"), EventState.PUBLISHED)
                 ))).orElseThrow(() -> new NotFoundException("Event not found"));
     }
 
@@ -150,7 +150,7 @@ public class PrivateRequestServiceImpl implements PrivateRequestService {
         return requestRepository.count((root, query, criteriaBuilder) ->
                 criteriaBuilder.and(
                         criteriaBuilder.equal(root.get("event"), event.getId()),
-                        criteriaBuilder.equal(root.get("status"), RequestState.CONFIRMED.ordinal())
+                        criteriaBuilder.equal(root.get("status"), RequestState.CONFIRMED)
                 ));
     }
 }

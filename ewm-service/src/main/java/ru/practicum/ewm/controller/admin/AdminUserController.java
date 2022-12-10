@@ -36,7 +36,7 @@ public class AdminUserController {
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
-        log.info("Method: Delete, path = /admin/users/{id}, AdminUserService/delete, param: id = {}", id);
+        log.info("Method: Delete, path = /admin/users/{id}, AdminUserService/delete, pathVariable: id = {}", id);
 
         adminUserService.delete(id);
     }
